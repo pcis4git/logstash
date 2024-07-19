@@ -13,7 +13,11 @@ spec:
         app: {{THOR_LOGSTASH_APP}}
         deploy_date_time: '{{DEPLOY_DATE_TIME}}'
     spec:
+      serviceAccountName: kafkaserviceacct
       volumes:
+      - name: logstash-pvc-volume
+        persistentVolumeClaim:
+          claimName: kafka-pvc
       - name: logstash-config-volume
         configMap:
           name: '{{THOR_LOGSTASH_APP}}-config'
@@ -39,8 +43,8 @@ spec:
             cpu: 500m
             memory: 1G
         envFrom:
-              - configMapRef:
-                  name: {{THOR_LOGSTASH_APP}}
+          - configMapRef:
+              name: {{THOR_LOGSTASH_APP}}
         env:
           - name: deploy_date_time
             value: '{{DEPLOY_DATE_TIME}}'  
@@ -50,3 +54,5 @@ spec:
             mountPath: /usr/share/logstash/config
           - name: logstash-pipeline-volume
             mountPath: /usr/share/logstash/pipeline
+          - mountPath: /mnt/pvc
+            name: logstash-pvc-volume            
