@@ -5,9 +5,6 @@ export $(xargs < env.config)
 export LOGSTASH_CONFIGMAP=${THOR_LOGSTASH_APP}-config
 export PIPELINE_CONFIGMAP=${THOR_LOGSTASH_APP}-pipeline
 
-ls -la ../
-
-
 kubectl delete configmap $THOR_LOGSTASH_APP -n $KNS
 kubectl create configmap $THOR_LOGSTASH_APP -n $KNS \
   --from-literal=THOR_KAFKA_BROKER=$THOR_KAFKA_BROKER \
@@ -15,7 +12,6 @@ kubectl create configmap $THOR_LOGSTASH_APP -n $KNS \
   --from-literal=THOR_KAFKA_GROUP=$THOR_KAFKA_GROUP \
   --from-literal=THOR_DEBUG=$THOR_DEBUG  \
   --from-literal=THOR_ENV=$THOR_ENV
-
 
 kubectl delete configmap ${LOGSTASH_CONFIGMAP} -n $KNS
 kubectl create configmap ${LOGSTASH_CONFIGMAP} -n $KNS \
@@ -25,9 +21,8 @@ kubectl create configmap ${LOGSTASH_CONFIGMAP} -n $KNS \
 
 kubectl delete configmap ${PIPELINE_CONFIGMAP} -n $KNS
 kubectl create configmap ${PIPELINE_CONFIGMAP} -n $KNS \
-   --from-file=kafka.conf=./eventhubs.conf \
+   --from-file=kafka.conf=./kafka.conf \
    --from-file=kafka-filter.rb=./kafka-filter.rb 
-
 
 export DEPLOY_DATE_TIME=`date +%Y%m%d_%H%M%S`
 
