@@ -26,8 +26,8 @@ kubectl create configmap ${PIPELINE_CONFIGMAP} -n $KNS \
 
 export DEPLOY_DATE_TIME=`date +%Y%m%d_%H%M%S`
 
-cat logstash.template.yml | sed "s/{{THOR_LOGSTASH_APP}}/$THOR_LOGSTASH_APP/g" | sed "s/{{DEPLOY_DATE_TIME}}/$DEPLOY_DATE_TIME/g" > logstash.yml
-kubectl apply  -f  logstash.yml -n $KNS
+cat logstash.deployment.template.yml | sed "s/{{THOR_LOGSTASH_APP}}/$THOR_LOGSTASH_APP/g" | sed "s/{{DEPLOY_DATE_TIME}}/$DEPLOY_DATE_TIME/g" > logstash.deployment.yml
+kubectl apply  -f  logstash.deployment.yml -n $KNS
 # cat eventhub-logstash.yml
 
 
