@@ -15,9 +15,9 @@ spec:
     spec:
       serviceAccountName: kafkaserviceacct
       volumes:
-      # - name: logstash-pvc-volume
-      #   persistentVolumeClaim:
-      #     claimName: kafka-pvc2
+      - name: logstash-pvc-volume
+        persistentVolumeClaim:
+          claimName: kafka-pvc2
       - name: logstash-config-volume
         configMap:
           name: '{{THOR_LOGSTASH_APP}}-config'
@@ -48,12 +48,12 @@ spec:
         env:
           - name: deploy_date_time
             value: '{{DEPLOY_DATE_TIME}}'  
-        image: 872859983801.dkr.ecr.ca-central-1.amazonaws.com/logstash:8.11.1
+        # image: 872859983801.dkr.ecr.ca-central-1.amazonaws.com/logstash:8.11.1
         command: ["tail","-f","/dev/null"]
         volumeMounts:
           - name: logstash-config-volume
             mountPath: /usr/share/logstash/config
           - name: logstash-pipeline-volume
             mountPath: /usr/share/logstash/pipeline
-          # - mountPath: /mnt/pvc
-          #   name: logstash-pvc-volume            
+          - mountPath: /mnt/pvc
+            name: logstash-pvc-volume            
