@@ -4,8 +4,8 @@ def filter(event)
        puts JSON.pretty_generate( event )
     end
 
-    indexName = event.get('thorIndexName')
-    event.set('[@metadata][target_index]', indexName )
+    # indexName = event.get('thorIndexName')
+    # event.set('[@metadata][target_index]', indexName )
 
     return [event]
 end    
