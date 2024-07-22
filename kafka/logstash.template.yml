@@ -49,6 +49,7 @@ spec:
           - name: deploy_date_time
             value: '{{DEPLOY_DATE_TIME}}'  
         image: 872859983801.dkr.ecr.ca-central-1.amazonaws.com/logstash:8.11.1
+        command: ["tail","-f","/dev/null"]
         volumeMounts:
           - name: logstash-config-volume
             mountPath: /usr/share/logstash/config
