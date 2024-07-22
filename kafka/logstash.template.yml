@@ -13,11 +13,6 @@ spec:
         app: {{THOR_LOGSTASH_APP}}
         deploy_date_time: '{{DEPLOY_DATE_TIME}}'
     spec:
-      tolerations:
-      - key: "eks.amazonaws.com/compute-type"
-        operator: "Equal"
-        value: "fargate"
-        effect: "NoSchedule"
       serviceAccountName: kafkaserviceacct
       volumes:
       - name: logstash-pvc-volume
@@ -43,10 +38,10 @@ spec:
               path: kafka-filter.rb
       containers:
       - name: logstash
-        resources:
-          limits:
-            cpu: 500m
-            memory: 1G
+        # resources:
+        #   limits:
+        #     cpu: 500m
+        #     memory: 1G
         envFrom:
           - configMapRef:
               name: {{THOR_LOGSTASH_APP}}
