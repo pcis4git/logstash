@@ -17,7 +17,7 @@ spec:
       volumes:
       - name: logstash-pvc-volume
         persistentVolumeClaim:
-          claimName: kafka-pvc1
+          claimName: kafka-pvc2
       - name: logstash-config-volume
         configMap:
           name: '{{THOR_LOGSTASH_APP}}-config'
