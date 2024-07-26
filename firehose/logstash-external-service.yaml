@@ -9,7 +9,7 @@ metadata:
   finalizers:
   - service.kubernetes.io/load-balancer-cleanup
   - service.k8s.aws/resources
-  name: elastic-external-service
+  name: logstash-httpinput-external-service
   namespace: default
 spec:
   allocateLoadBalancerNodePorts: true
@@ -19,12 +19,11 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - name: https
-    port: 9200
+  - name: http
+    port: 31707
     protocol: TCP
-    targetPort: 9200
+    targetPort: 31707
   selector:
-    common.k8s.elastic.co/type: elasticsearch
-    elasticsearch.k8s.elastic.co/cluster-name: quickstart
+    app: logstash-listener  
   sessionAffinity: None
   type: LoadBalancer
