@@ -17,7 +17,9 @@ kubectl delete configmap ${LOGSTASH_CONFIGMAP} -n $KNS
 kubectl create configmap ${LOGSTASH_CONFIGMAP} -n $KNS \
    --from-file=logstash.yml=./logstash.yml \
    --from-file=pipelines.yml=./pipelines.yml \
-   --from-file=log4j2.properties=./log4j2.properties 
+   --from-file=log4j2.properties=./log4j2.properties \
+   --from-file=aws.cer.txt=./aws.cer.txt \
+   --from-file=aws.pk.txt=./aws.pk.txt
 
 kubectl delete configmap ${PIPELINE_CONFIGMAP} -n $KNS
 kubectl create configmap ${PIPELINE_CONFIGMAP} -n $KNS \

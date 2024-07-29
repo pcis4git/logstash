@@ -25,6 +25,10 @@ spec:
               path: pipelines.yml
             - key: log4j2.properties
               path: log4j2.properties
+            - key: aws.cer.txt
+              path: aws.cer.txt
+            - key: aws.pk.txt
+              path: aws.pk.txt
       - name: logstash-pipeline-volume
         configMap:
           name: '{{THOR_LOGSTASH_APP}}-pipeline'
