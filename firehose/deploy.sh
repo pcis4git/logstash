@@ -32,4 +32,6 @@ cat logstash.deployment.template.yml | sed "s/{{THOR_LOGSTASH_APP}}/$THOR_LOGSTA
 kubectl apply  -f  logstash.deployment.yml -n $KNS
 # cat eventhub-logstash.yml
 
+kubectl apply -f logstash-external-service.yaml
+
 
