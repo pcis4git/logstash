@@ -40,6 +40,13 @@ spec:
               path: pipeline.conf
             - key: filter.rb
               path: filter.rb
+      initContainers:
+        - name: init-permissions
+          image: busybox
+          command: ['sh', '-c', 'chmod -R 777 /mnt/pvc']
+          volumeMounts:
+            - mountPath: /mnt/pvc
+              name: logstash-pvc-volume      
       containers:
       - name: logstash
         # resources:
