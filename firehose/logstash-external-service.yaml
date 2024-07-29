@@ -20,9 +20,9 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
   - name: http
-    port: 31707
+    port: 443
     protocol: TCP
-    targetPort: 31707
+    targetPort: 443
   selector:
     app: logstash-listener  
   sessionAffinity: None
