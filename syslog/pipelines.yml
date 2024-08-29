@@ -1,0 +1,4 @@
+- pipeline.id: pipeline1
+  pipeline.workers: 5
+  path.config: "/usr/share/logstash/pipeline/main-pipeline.conf"
+  pipeline.ecs_compatibility: disabled
