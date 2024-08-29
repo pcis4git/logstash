@@ -9,3 +9,6 @@ spec:
     - protocol: TCP
       port: 31500
       targetPort: 31500
+    - protocol: TCP
+      port: 31501
+      targetPort: 31501
