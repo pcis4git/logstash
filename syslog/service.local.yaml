@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gtw_syslog_listener_local
+  name: gtw-syslog-listener-local
 spec:
   selector:
     app: gtw-syslog-listener
