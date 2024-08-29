@@ -9,6 +9,8 @@ spec:
     - protocol: TCP
       port: 31500
       targetPort: 31500
+      name: syslog-port
     - protocol: TCP
       port: 31501
       targetPort: 31501
+      name: http-port
