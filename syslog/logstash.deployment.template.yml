@@ -36,6 +36,8 @@ spec:
               path: main-pipeline.conf
             - key: main-filter.rb
               path: main-filter.rb
+      securityContext:
+        fsGroup: 1000  # This ensures that the volume is mounted with 777 permissions
       containers:
       - name: logstash
         # resources:
@@ -57,5 +59,3 @@ spec:
             mountPath: /usr/share/logstash/pipeline
           - mountPath: /mnt/logdump
             name: logstash-pvc-volume
-        securityContext:
-          fsGroup: 1000  # This ensures that the volume is mounted with 777 permissions
